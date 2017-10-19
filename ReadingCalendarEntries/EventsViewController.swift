@@ -13,6 +13,7 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let eventStore = EKEventStore()
     var calendar: EKCalendar!
     var events: [EKEvent]?
 
@@ -27,6 +28,9 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+     * Load events from a set formatted start and end date.
+     */
     func loadEvents() {
         // Create a date formatter instance to use for converting a string to a date
         let dateFormatter = DateFormatter()
@@ -37,13 +41,11 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         let endDate = dateFormatter.date(from: "2017-12-31")
         
         if let startDate = startDate, let endDate = endDate {
-            let eventStore = EKEventStore()
-            
             // Use an event store instance to create and properly configure an NSPredicate
             let eventsPredicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendar])
             
             // Use the configured NSPredicate to find and return events in the store that match
-            self.events = eventStore.events(matching: eventsPredicate).sorted(){
+            self.events = eventStore.events(matching: eventsPredicate).sorted() {
                 (e1: EKEvent, e2: EKEvent) -> Bool in
                 return e1.startDate.compare(e2.startDate) == ComparisonResult.orderedAscending
             }
@@ -63,7 +65,7 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
-        cell.textLabel?.text = events?[indexPath.row].location
+        cell.textLabel?.text = events?[indexPath.row].title
         return cell
     }
 }

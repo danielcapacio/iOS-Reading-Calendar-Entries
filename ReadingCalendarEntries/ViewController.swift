@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1 // This was put in mainly for my own unit testing
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,7 +44,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Note:  Be sure to replace the argument to dequeueReusableCellWithIdentifier with the actual identifier string!
         let cell = tableView.dequeueReusableCell(withIdentifier : "BasicCell") as! UITableViewCell
         
         if let calendars = self.calendars {
