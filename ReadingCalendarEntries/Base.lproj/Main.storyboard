@@ -44,6 +44,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="f0G-wH-bdF"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dek-QE-YTJ" userLabel="NeedPermissionView">
+                                <rect key="frame" x="0.0" y="85.5" width="375" height="362"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsU-4G-qzv">
+                                        <rect key="frame" x="131.5" y="246" width="98" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Go to Settings"/>
+                                        <connections>
+                                            <action selector="goToSettingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wAw-uT-sHN"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTx-7a-42p">
+                                        <rect key="frame" x="15" y="85" width="352" height="117"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -55,6 +77,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="calendarsTableView" destination="zgi-dp-wLW" id="rtb-S4-DgV"/>
+                        <outlet property="needPermissionView" destination="Dek-QE-YTJ" id="8GO-IB-RkU"/>
+                        <outlet property="permissionDeniedLabel" destination="FTx-7a-42p" id="KR7-us-2IJ"/>
                         <outlet property="tableView" destination="zgi-dp-wLW" id="mWa-gP-Cl8"/>
                     </connections>
                 </viewController>

@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import EventKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var needPermissionView: UIView!
+    @IBOutlet weak var calendarsTableView: UITableView!
+    @IBOutlet weak var permissionDeniedLabel: UILabel!
     
     let dataSourceArray = ["Item 1", "Item 2", "Item 3"]
+    let eventStore = EKEventStore()
+    var calendars: [EKCalendar]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        permissionDeniedLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        permissionDeniedLabel.numberOfLines = 0
+        permissionDeniedLabel.text = "This application needs permission to access your calendar in order to work."
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +50,58 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // set cell's detailTextLabel.text property
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkCalendarAuthorizationStatus()
+    }
+    
+    func checkCalendarAuthorizationStatus() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        switch (status) {
+        case EKAuthorizationStatus.notDetermined:
+            // This happens on first-run
+            requestAccessToCalendar()
+        case EKAuthorizationStatus.authorized:
+            // Things are in line with being able to show the calendars in the table view
+            loadCalendars()
+            refreshTableView()
+        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            // We need to help them give us permission
+            needPermissionView.fadeIn()
+        }
+    }
+    
+    func requestAccessToCalendar() {
+        eventStore.requestAccess(to: EKEntityType.event, completion: {
+            (accessGranted: Bool, error: Error?) in
+            
+            if accessGranted == true {
+                DispatchQueue.main.async(execute: {
+                    self.loadCalendars()
+                    self.refreshTableView()
+                })
+            } else {
+                DispatchQueue.main.async(execute: {
+                    self.needPermissionView.fadeIn()
+                })
+            }
+        })
+    }
+    
+    func loadCalendars() {
+        self.calendars = eventStore.calendars(for: EKEntityType.event)
+    }
+    
+    func refreshTableView() {
+        calendarsTableView.isHidden = false
+        calendarsTableView.reloadData()
+    }
+    
+    @IBAction func goToSettingsButtonTapped(_ sender: UIButton) {
+        let openSettingsUrl = URL(string: UIApplicationOpenSettingsURLString)
+        UIApplication.shared.openURL(openSettingsUrl!)
     }
 }
 
