@@ -16,7 +16,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var calendarsTableView: UITableView!
     @IBOutlet weak var permissionDeniedLabel: UILabel!
     
-    let dataSourceArray = ["Item 1", "Item 2", "Item 3"]
     let eventStore = EKEventStore()
     var calendars: [EKCalendar]?
     
@@ -38,17 +37,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSourceArray.count // Most of the time my data source is an array of something...  will replace with the actual name of the data source
+        if let calendars = self.calendars {
+            return calendars.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Note:  Be sure to replace the argument to dequeueReusableCellWithIdentifier with the actual identifier string!
         let cell = tableView.dequeueReusableCell(withIdentifier : "BasicCell") as! UITableViewCell
         
-        // set cell's textLabel.text property
-        cell.textLabel?.text = dataSourceArray[indexPath.row]
-        
-        // set cell's detailTextLabel.text property
+        if let calendars = self.calendars {
+            let calendarName = calendars[(indexPath as NSIndexPath).row].title
+            cell.textLabel?.text = calendarName
+        } else {
+            cell.textLabel?.text = "Unknown Calendar Name"
+        }
         return cell
     }
     
