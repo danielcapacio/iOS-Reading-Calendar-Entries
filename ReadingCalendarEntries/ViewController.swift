@@ -107,5 +107,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let openSettingsUrl = URL(string: UIApplicationOpenSettingsURLString)
         UIApplication.shared.openURL(openSettingsUrl!)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+                case SegueIdentifiers.showAddCalendarSegue:
+                    _ = segue.destination as! UINavigationController
+                case SegueIdentifiers.showEventsSegue:
+                    let destinationVC = segue.destination as! EventsViewController
+                    let selectedIndexPath = calendarsTableView.indexPathForSelectedRow!
+                    
+                    destinationVC.calendar = calendars?[(selectedIndexPath as NSIndexPath).row]
+                default: break
+            }
+        }
+    }
 }
 

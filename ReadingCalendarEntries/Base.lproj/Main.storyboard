@@ -37,6 +37,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="db0-9o-oBI" kind="show" identifier="showEvents" id="Z2t-hd-44S"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -86,6 +89,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Events View Controller-->
+        <scene sceneID="teq-M1-By5">
+            <objects>
+                <viewController id="db0-9o-oBI" customClass="EventsViewController" customModule="ReadingCalendarEntries" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tdo-Zg-3Ec">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k7k-j8-qBw">
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BasicCell" textLabel="9vo-du-xQa" style="IBUITableViewCellStyleDefault" id="kOi-kw-kzN">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kOi-kw-kzN" id="1Gf-eF-WDA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9vo-du-xQa">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="db0-9o-oBI" id="jEI-qZ-6rR"/>
+                                    <outlet property="delegate" destination="db0-9o-oBI" id="21C-Z7-ZB6"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k7k-j8-qBw" firstAttribute="width" secondItem="tdo-Zg-3Ec" secondAttribute="width" id="9uL-J7-3m7"/>
+                            <constraint firstItem="k7k-j8-qBw" firstAttribute="centerX" secondItem="mkh-2c-Fcu" secondAttribute="centerX" id="Pc1-Hx-pCt"/>
+                            <constraint firstItem="k7k-j8-qBw" firstAttribute="height" secondItem="tdo-Zg-3Ec" secondAttribute="height" id="PhH-me-BZH"/>
+                            <constraint firstItem="k7k-j8-qBw" firstAttribute="centerY" secondItem="mkh-2c-Fcu" secondAttribute="centerY" id="aAg-24-C2B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mkh-2c-Fcu"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="k7k-j8-qBw" id="d2Z-x5-7qs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48M-7n-E8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

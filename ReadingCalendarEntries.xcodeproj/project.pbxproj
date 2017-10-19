@@ -13,6 +13,8 @@
 		064F49061F981FDC0014EE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 064F49051F981FDC0014EE77 /* Assets.xcassets */; };
 		064F49091F981FDC0014EE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 064F49071F981FDC0014EE77 /* LaunchScreen.storyboard */; };
 		064F49111F9899AD0014EE77 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064F49101F9899AD0014EE77 /* UIViewExtensions.swift */; };
+		064F49191F98C81A0014EE77 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064F49181F98C81A0014EE77 /* EventsViewController.swift */; };
+		064F491B1F98C91C0014EE77 /* SegueIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064F491A1F98C91C0014EE77 /* SegueIdentifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		064F49081F981FDC0014EE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		064F490A1F981FDC0014EE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		064F49101F9899AD0014EE77 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		064F49181F98C81A0014EE77 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		064F491A1F98C91C0014EE77 /* SegueIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +44,8 @@
 		064F48F21F981FDC0014EE77 = {
 			isa = PBXGroup;
 			children = (
-				064F48FD1F981FDC0014EE77 /* ReadingCalendarEntries */,
 				064F48FC1F981FDC0014EE77 /* Products */,
+				064F48FD1F981FDC0014EE77 /* ReadingCalendarEntries */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +60,15 @@
 		064F48FD1F981FDC0014EE77 /* ReadingCalendarEntries */ = {
 			isa = PBXGroup;
 			children = (
+				064F490A1F981FDC0014EE77 /* Info.plist */,
 				064F48FE1F981FDC0014EE77 /* AppDelegate.swift */,
+				064F49181F98C81A0014EE77 /* EventsViewController.swift */,
+				064F491A1F98C91C0014EE77 /* SegueIdentifiers.swift */,
+				064F49101F9899AD0014EE77 /* UIViewExtensions.swift */,
 				064F49001F981FDC0014EE77 /* ViewController.swift */,
-				064F49021F981FDC0014EE77 /* Main.storyboard */,
 				064F49051F981FDC0014EE77 /* Assets.xcassets */,
 				064F49071F981FDC0014EE77 /* LaunchScreen.storyboard */,
-				064F490A1F981FDC0014EE77 /* Info.plist */,
-				064F49101F9899AD0014EE77 /* UIViewExtensions.swift */,
+				064F49021F981FDC0014EE77 /* Main.storyboard */,
 			);
 			path = ReadingCalendarEntries;
 			sourceTree = "<group>";
@@ -139,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				064F491B1F98C91C0014EE77 /* SegueIdentifiers.swift in Sources */,
 				064F49011F981FDC0014EE77 /* ViewController.swift in Sources */,
+				064F49191F98C81A0014EE77 /* EventsViewController.swift in Sources */,
 				064F49111F9899AD0014EE77 /* UIViewExtensions.swift in Sources */,
 				064F48FF1F981FDC0014EE77 /* AppDelegate.swift in Sources */,
 			);
