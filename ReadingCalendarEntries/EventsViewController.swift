@@ -63,6 +63,16 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         return 0
     }
     
+    /*
+     * Function that populates the table view cells with events from pressed calendar.
+     * https://developer.apple.com/documentation/eventkit/ekcalendaritem
+     * Other Calendar Properties:
+     * - location
+     * - creationDate
+     * - lastModifiedDate
+     * - timeZone
+     * - URL
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
         cell.textLabel?.text = events?[indexPath.row].title
