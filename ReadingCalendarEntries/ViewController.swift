@@ -21,7 +21,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // UINavigationController gets the value for the title from the current UIViewController
+        self.title = "Calendars"
         permissionDeniedLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         permissionDeniedLabel.numberOfLines = 0
         permissionDeniedLabel.text = "This application needs permission to access your calendar in order to work."
